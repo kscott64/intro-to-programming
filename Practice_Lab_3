@@ -1,0 +1,96 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/kscott64/intro-to-programming/blob/main/Practice_Lab_3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "background_save": true,
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0gLHByIo79HZ",
+        "outputId": "ffa8b606-5c27-4b15-c491-6b9bcb6527ae"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "=== Secure Notes App ===\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(\"=== Secure Notes App ===\")\n",
+        "\n",
+        "choice = input(\"Choose add / view: \").strip().lower()\n",
+        "\n",
+        "if choice == \"add\":\n",
+        "  note = input(\"Enter note: \").strip().lower()\n",
+        "\n",
+        "  encrypted = \"\"\n",
+        "  for ch in note:\n",
+        "    encrypted = encrypted + chr(ord(ch) + 1)\n",
+        "\n",
+        "  file = open(\"secure_notes.txt\", \"a\")\n",
+        "  file.write(encrypted + \"\\n\")\n",
+        "  file.close()\n",
+        "\n",
+        "  print(\"Note saved securely.\")\n",
+        "\n",
+        "elif choice == \"view\":\n",
+        "  file = open(\"secure_notes.txt\", \"r\")\n",
+        "\n",
+        "  count = 0\n",
+        "  for line in file:\n",
+        "    decrypted = \"\"\n",
+        "    for ch in line.strip():\n",
+        "      decrypted = decrypted + chr(ord(ch) - 1)\n",
+        "\n",
+        "      print(\"- \" + decrypted)\n",
+        "      count = count + 1\n",
+        "\n",
+        "  file.close()\n",
+        "  print(\"Total notes:\", count)\n",
+        "\n",
+        "else:\n",
+        "    print(\"Invalid option.\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "B66ztWhpFTPt"
+      },
+      "outputs": [],
+      "source": []
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMQRzm6YDnBMzDXyY5vnNzc",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
