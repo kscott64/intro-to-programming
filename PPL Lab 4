@@ -1,0 +1,346 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyO57fZbJPacS9/UNN//7cST",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/kscott64/intro-to-programming/blob/main/PPL%20Lab%204\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Li7EHd_rennx",
+        "outputId": "81cd36f0-3bdf-49eb-f5c6-6b79ec361915"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "8\n"
+          ]
+        }
+      ],
+      "source": [
+        "x = 5\n",
+        "y = 3\n",
+        "z = x + y\n",
+        "print(z)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "if x > 5:\n",
+        "  print(\"big\")\n",
+        "if x < 5:\n",
+        "  print(\"small\")\n",
+        "x = 6"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nXJAVW6Ke2pO",
+        "outputId": "c4343999-20b1-4dde-9455-d6a60f1d385d"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "big\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def countdown(n):\n",
+        "  if n == 0:\n",
+        "    print(\"done\")\n",
+        "    return\n",
+        "  print(n)\n",
+        "  countdown(n - 1)\n",
+        "\n",
+        "countdown(3)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sHMglFTgftTX",
+        "outputId": "90657129-4d81-4680-fa01-fccf62f5e3ec"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "3\n",
+            "2\n",
+            "1\n",
+            "done\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def greet_person(name, greet_func):\n",
+        "  return greet_func(name)"
+      ],
+      "metadata": {
+        "id": "EzGriEPrgAxb"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Person:\n",
+        "  def __init__(self, name, age):\n",
+        "    self.name = name\n",
+        "    self.age = age\n",
+        "\n",
+        "p = Person(\"Alice\", 20)\n",
+        "print(p.name)\n",
+        "print(p.age)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2VkC7sw8gY2I",
+        "outputId": "0875987d-3295-496f-8604-2bc8be25276e"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Alice\n",
+            "20\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import ast\n",
+        "code = \"5 + 3 * 2\"\n",
+        "tree = ast.parse(code)\n",
+        "print(ast.dump(tree, indent=2))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MD6GFAWsg1wT",
+        "outputId": "c3c799f8-516b-4f73-a4de-654d9283991c"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Module(\n",
+            "  body=[\n",
+            "    Expr(\n",
+            "      value=BinOp(\n",
+            "        left=Constant(value=5),\n",
+            "        op=Add(),\n",
+            "        right=BinOp(\n",
+            "          left=Constant(value=3),\n",
+            "          op=Mult(),\n",
+            "          right=Constant(value=2))))],\n",
+            "  type_ignores=[])\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "x = 5\n",
+        "x = \"hello\"\n",
+        "x = 3.14\n",
+        "\n",
+        "print(\"Age:\" + str(25))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "q2h3sn7chLMo",
+        "outputId": "a46496a0-f2ed-42ee-e75b-b97751b325ee"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Age:25\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "fruits = [\"Apple\", \"Banana\"]\n",
+        "fruits.append(\"Cherry\")\n",
+        "fruits[0] = \"Avacado\"\n",
+        "print(fruits)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XRqprnP6hedU",
+        "outputId": "18afee93-639d-4216-f97e-8913e36d6838"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Avacado', 'Banana', 'Cherry']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "greeting = \"Hello\"\n",
+        "\n",
+        "def say_hi():\n",
+        "  name = \"Alice\"\n",
+        "  print(greeting)\n",
+        "  print(name)\n",
+        "\n",
+        "say_hi()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6inqRCU6hyz8",
+        "outputId": "c36338a4-1284-4dc2-ad04-b727e74815bc"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hello\n",
+            "Alice\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def add(a, b):\n",
+        "  return a + b\n",
+        "\n",
+        "print(add(3, 4))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yDXoHi_JiGm_",
+        "outputId": "a7c5d3a9-e041-4ab6-d55a-d56c22de56e3"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "7\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate(a, b, when_done):\n",
+        "  result = a + b\n",
+        "  when_done(result)\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "WunLSH4yiV0c"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def add(a, b):\n",
+        "  return a + b\n",
+        "\n",
+        "result = add(3,4)\n",
+        "print(result)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZowBdV1Ji1dY",
+        "outputId": "a725878d-d63d-4976-ff23-8383b416b3fb"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "7\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
